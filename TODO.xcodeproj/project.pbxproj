@@ -7,7 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A19BF9929182A3500FCCF50 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BF9829182A3500FCCF50 /* TableViewController.swift */; };
+		1A19BF9929182A3500FCCF50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BF9829182A3500FCCF50 /* ViewController.swift */; };
+		1A19BFA029182D8100FCCF50 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BF9F29182D8100FCCF50 /* TableViewCell.swift */; };
+		1A19BFA229182D9100FCCF50 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFA129182D9100FCCF50 /* Model.swift */; };
+		1A19BFA529182DE300FCCF50 /* TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFA429182DE300FCCF50 /* TableViewDataSource.swift */; };
+		1A19BFA7291831FB00FCCF50 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFA6291831FB00FCCF50 /* CustomTableView.swift */; };
+		1A19BFAD2918D28900FCCF50 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFAC2918D28900FCCF50 /* TableViewDelegate.swift */; };
+		1A19BFB329193B3200FCCF50 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFB229193B3200FCCF50 /* NavigationController.swift */; };
 		1A2658B828E5A63200A247AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2658B728E5A63200A247AA /* AppDelegate.swift */; };
 		1A2658BA28E5A63200A247AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2658B928E5A63200A247AA /* SceneDelegate.swift */; };
 		1A2658C128E5A63300A247AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2658C028E5A63300A247AA /* Assets.xcassets */; };
@@ -15,7 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1A19BF9829182A3500FCCF50 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		1A19BF9829182A3500FCCF50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1A19BF9F29182D8100FCCF50 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		1A19BFA129182D9100FCCF50 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1A19BFA429182DE300FCCF50 /* TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDataSource.swift; sourceTree = "<group>"; };
+		1A19BFA6291831FB00FCCF50 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		1A19BFAC2918D28900FCCF50 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
+		1A19BFB229193B3200FCCF50 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		1A2658B428E5A63200A247AA /* TODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2658B728E5A63200A247AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A2658B928E5A63200A247AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +47,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A19BF9A29182CDC00FCCF50 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A19BFA129182D9100FCCF50 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1A19BF9B29182CE500FCCF50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A19BF9F29182D8100FCCF50 /* TableViewCell.swift */,
+				1A19BFA6291831FB00FCCF50 /* CustomTableView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1A19BF9C29182CF000FCCF50 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1A19BF9829182A3500FCCF50 /* ViewController.swift */,
+				1A19BFB229193B3200FCCF50 /* NavigationController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1A19BF9D29182D0500FCCF50 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1A2658B728E5A63200A247AA /* AppDelegate.swift */,
+				1A2658B928E5A63200A247AA /* SceneDelegate.swift */,
+				1A2658C528E5A63300A247AA /* Info.plist */,
+				1A2658C228E5A63300A247AA /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		1A19BF9E29182D2000FCCF50 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				1A2658C028E5A63300A247AA /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		1A19BFA329182DB900FCCF50 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				1A19BFA429182DE300FCCF50 /* TableViewDataSource.swift */,
+				1A19BFAC2918D28900FCCF50 /* TableViewDelegate.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
 		1A2658AB28E5A63200A247AA = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +120,12 @@
 		1A2658B628E5A63200A247AA /* TODO */ = {
 			isa = PBXGroup;
 			children = (
-				1A2658B728E5A63200A247AA /* AppDelegate.swift */,
-				1A2658B928E5A63200A247AA /* SceneDelegate.swift */,
-				1A19BF9829182A3500FCCF50 /* TableViewController.swift */,
-				1A2658C028E5A63300A247AA /* Assets.xcassets */,
-				1A2658C228E5A63300A247AA /* LaunchScreen.storyboard */,
-				1A2658C528E5A63300A247AA /* Info.plist */,
+				1A19BF9A29182CDC00FCCF50 /* Model */,
+				1A19BF9B29182CE500FCCF50 /* View */,
+				1A19BF9C29182CF000FCCF50 /* Controller */,
+				1A19BFA329182DB900FCCF50 /* DataSource */,
+				1A19BF9E29182D2000FCCF50 /* Resource */,
+				1A19BF9D29182D0500FCCF50 /* SupportingFiles */,
 			);
 			path = TODO;
 			sourceTree = "<group>";
@@ -157,8 +223,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A19BFAD2918D28900FCCF50 /* TableViewDelegate.swift in Sources */,
+				1A19BFA529182DE300FCCF50 /* TableViewDataSource.swift in Sources */,
+				1A19BFA229182D9100FCCF50 /* Model.swift in Sources */,
 				1A2658B828E5A63200A247AA /* AppDelegate.swift in Sources */,
-				1A19BF9929182A3500FCCF50 /* TableViewController.swift in Sources */,
+				1A19BFB329193B3200FCCF50 /* NavigationController.swift in Sources */,
+				1A19BFA7291831FB00FCCF50 /* CustomTableView.swift in Sources */,
+				1A19BFA029182D8100FCCF50 /* TableViewCell.swift in Sources */,
+				1A19BF9929182A3500FCCF50 /* ViewController.swift in Sources */,
 				1A2658BA28E5A63200A247AA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +372,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TFP9B86SX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TODO/Info.plist;
+				INFOPLIST_FILE = TODO/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -331,7 +403,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2TFP9B86SX;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TODO/Info.plist;
+				INFOPLIST_FILE = TODO/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
