@@ -8,18 +8,22 @@
 import UIKit
 
 final class TableViewDataSource: NSObject, UITableViewDataSource {
+
+    var model = ViewModel()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        model.items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Cell.identifier, for: indexPath) as? Cell else { fatalError("Cell nil") }
 
-        return cell
-    }
+        let currentItem = model.items[indexPath.row]
+        cell.titleLabel.text = currentItem.title
+        cell.subtitleLabel.text = currentItem.completedDate
 
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "TODO"
+        cell.accessoryType = currentItem.completed ? .checkmark : .none
+
+        return cell
     }
 }

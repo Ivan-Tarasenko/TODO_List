@@ -13,9 +13,26 @@ final class Cell: UITableViewCell {
         return String(describing: self)
     }
 
+    let titleLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 17)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    let subtitleLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .darkGray
+        label.text = "11.12.2022"
+        label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        makeConstraint()
     }
 
     required init?(coder: NSCoder) {
@@ -24,9 +41,16 @@ final class Cell: UITableViewCell {
 
             // Setting up the cell
    private func setupCell() {
-//        layer.borderWidth = 1
-//        layer.borderColor = UIColor.black.cgColor
-//        layer.cornerRadius = 4
-//        backgroundColor = .systemGray6
+       self.addSubview(titleLabel)
+       self.addSubview(subtitleLabel)
+    }
+
+    func makeConstraint() {
+        NSLayoutConstraint.activate([
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 25),
+            subtitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5)
+        ])
     }
 }

@@ -9,11 +9,15 @@ import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
 
-    let customDataSource = TableViewDataSource()
-    let customDelegate = TableViewDelegate()
+    var model = ViewModel()
 
+    var customDataSource = TableViewDataSource()
+    private let customDelegate = TableViewDelegate()
     private let tableView = CustomTableView()
+    private let createTaskView = CreateTaskView()
     private let searchController = UISearchController()
+
+    let saveDate = SaveData()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,8 @@ class ViewController: UIViewController, UISearchBarDelegate {
         setupTableView()
         setupSearchController()
         setupNavigationBar()
+        bind()
+//        doneButtonPressed()
     }
 
     func setupNavigationBar() {
@@ -47,15 +53,25 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
         navigationItem.rightBarButtonItems = [add, edit, sort]
         navigationController?.navigationBar.backgroundColor = .systemGray6
-        self.definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    func bind() {
+        createTaskView.doneAction = { [weak self] date, title in
+            guard let self else { return }
+            self.model.addItem(task: title, completedDate: date)
+            self.tableView.reloadData()
+
+        }
     }
 }
 
+// MARK: - Actions Nav Bar
+// Actions of navigation panel buttons
 @objc extension ViewController {
 
     func addButtonPressed() {
-        print("add")
+        createTaskView.isHidden = false
+
     }
 
     func editButtonPressed() {
@@ -67,11 +83,15 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
 }
 
+// MARK: - Private Extension
 private extension ViewController {
 
     func setupView() {
         view.addSubview(tableView)
-//        title = "ToDo List"
+        view.addSubview(createTaskView)
+        customDataSource.model = model
+        createTaskView.center = view.center
+        createTaskView.isHidden = true
     }
 
     func setupSearchController() {
