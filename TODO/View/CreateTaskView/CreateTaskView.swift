@@ -10,7 +10,6 @@ import UIKit
 final class CreateTaskView: UIView {
 
     var doneAction: ((String, String) -> Void)?
-//    let saveDate = SaveData()
     let model = CreateTaskModel()
 
     let doneButton: UIButton = {
@@ -45,6 +44,7 @@ final class CreateTaskView: UIView {
         field.backgroundColor = .white
         field.borderStyle = .roundedRect
         field.placeholder = "Enter task"
+        field.becomeFirstResponder()
         field.translatesAutoresizingMaskIntoConstraints = false
         return field
     }()
@@ -126,6 +126,7 @@ final class CreateTaskView: UIView {
         guard let titleTask = textField.text else { return }
         doneAction?(model.data ?? "", titleTask)
         model.data?.removeAll()
+        textField.text?.removeAll()
         isHidden.toggle()
     }
 

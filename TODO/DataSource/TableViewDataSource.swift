@@ -26,4 +26,12 @@ final class TableViewDataSource: NSObject, UITableViewDataSource {
 
         return cell
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("TEst")
+    }
 }

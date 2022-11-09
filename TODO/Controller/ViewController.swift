@@ -25,10 +25,47 @@ class ViewController: UIViewController, UISearchBarDelegate {
         setupTableView()
         setupSearchController()
         setupNavigationBar()
-        bind()
-//        doneButtonPressed()
+        addItem()
+        editIem()
+        removeItem()
+    }
+}
+
+// MARK: - Operation on items
+extension ViewController {
+    func addItem() {
+        createTaskView.doneAction = { [weak self] date, title in
+            guard let self else { return }
+            self.model.addItem(task: title, completedDate: date)
+            self.tableView.reloadData()
+
+        }
     }
 
+    func editIem() {
+        customDelegate.editButtonAction = { [weak self] index in
+            guard let self else { return }
+            self.createTaskView.isHidden = false
+            self.createTaskView.textField.text! = self.model.items[index].title
+            self.createTaskView.doneAction = {[weak self] date, title in
+                guard let self else { return }
+                self.model.editItem(at: index, edit: title, date: date)
+                self.tableView.reloadData()
+            }
+        }
+    }
+
+    func removeItem() {
+        customDelegate.removeButtonAction = { [weak self] index in
+            guard let self else { return }
+            self.model.removeItem(at: index)
+            self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Setting Navigation Controller
+extension ViewController {
     func setupNavigationBar() {
         let add = UIBarButtonItem(
             image: UIImage(systemName: "rectangle.and.pencil.and.ellipsis"),
@@ -51,17 +88,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
             action: #selector(sortButtonPressed)
         )
 
-        navigationItem.rightBarButtonItems = [add, edit, sort]
+        navigationItem.rightBarButtonItems = [add, edit]
+        navigationItem.leftBarButtonItems = [sort]
         navigationController?.navigationBar.backgroundColor = .systemGray6
-    }
-
-    func bind() {
-        createTaskView.doneAction = { [weak self] date, title in
-            guard let self else { return }
-            self.model.addItem(task: title, completedDate: date)
-            self.tableView.reloadData()
-
-        }
     }
 }
 
@@ -75,11 +104,27 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
 
     func editButtonPressed() {
-        print("edit")
+        let editON = UIImage(systemName: "highlighter")
+        let editOff = UIImage(systemName: "pencil.slash")
+        let editButton = navigationItem.rightBarButtonItems![1]
+        tableView.setEditing(!tableView.isEditing, animated: true)
+
+        editButton.image = model.isEdit ? editOff : editON
+
+        model.isEdit.toggle()
+//        tableView.reloadData()
     }
 
     func sortButtonPressed() {
-        print("sort")
+        let sortUp = UIImage(systemName: "arrow.up")
+        let sortDown = UIImage(systemName: "arrow.down")
+        let sortButton = navigationItem.leftBarButtonItems![0]
+
+        sortButton.image = model.isSorted ? sortDown : sortUp
+
+        model.isSorted.toggle()
+        model.sortItemByTitle()
+        tableView.reloadData()
     }
 }
 
@@ -92,6 +137,7 @@ private extension ViewController {
         customDataSource.model = model
         createTaskView.center = view.center
         createTaskView.isHidden = true
+        title = "ToDo List"
     }
 
     func setupSearchController() {

@@ -9,6 +9,8 @@ import UIKit
 
 final class Cell: UITableViewCell {
 
+    let model = ViewModel()
+
     static var identifier: String {
         return String(describing: self)
     }
@@ -23,7 +25,6 @@ final class Cell: UITableViewCell {
     let subtitleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .darkGray
-        label.text = "11.12.2022"
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -41,14 +42,22 @@ final class Cell: UITableViewCell {
 
             // Setting up the cell
    private func setupCell() {
-       self.addSubview(titleLabel)
-       self.addSubview(subtitleLabel)
+       addSubview(titleLabel)
+       addSubview(subtitleLabel)
     }
 
     func makeConstraint() {
+        var leading: CGFloat = 5
+
+        if model.isEdit {
+            leading = 15
+        } else {
+            leading = 5
+        }
+
         NSLayoutConstraint.activate([
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leading),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 25),
             subtitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5)
         ])
