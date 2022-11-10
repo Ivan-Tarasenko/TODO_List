@@ -12,7 +12,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let navigationController = TableViewController()
+
+        // Creating a Navigation Controller and connecting to a ViewController
+        let navigationController = UINavigationController(rootViewController: ViewController())
 
         guard let windowScene  = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)

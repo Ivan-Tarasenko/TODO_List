@@ -1,7 +1,7 @@
 disabled_rules:
 - trailing_whitespace
 - unused_optional_binding
-- force_try
+- weak_delegate
 - type_name
 opt_in_rules:
 - empty_count
