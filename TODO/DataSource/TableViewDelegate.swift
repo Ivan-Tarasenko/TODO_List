@@ -12,6 +12,7 @@ class TableViewDelegate: NSObject, UITableViewDelegate {
     let model = ViewModel()
     var editButtonAction: ((Int) -> Void)?
     var removeButtonAction: ((Int) -> Void)?
+    var changeStatusAction: ((IndexPath) -> Void)?
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50
@@ -52,11 +53,6 @@ class TableViewDelegate: NSObject, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)  // The method that marks the cell selection
-
-        if model.changeState(at: indexPath.row) == true {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        }
+        changeStatusAction?(indexPath)
     }
 }

@@ -23,6 +23,7 @@ final class TableViewDataSource: NSObject, UITableViewDataSource {
         cell.subtitleLabel.text = currentItem.completedDate
 
         cell.accessoryType = currentItem.completed ? .checkmark : .none
+        cell.backgroundColor = currentItem.completed ? R.ColorCell.done : R.ColorCell.notCompleted
 
         return cell
     }

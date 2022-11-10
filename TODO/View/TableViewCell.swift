@@ -17,7 +17,7 @@ final class Cell: UITableViewCell {
 
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 17)
+        label.font = UIFont.systemFont(ofSize: 23)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -47,18 +47,11 @@ final class Cell: UITableViewCell {
     }
 
     func makeConstraint() {
-        var leading: CGFloat = 5
-
-        if model.isEdit {
-            leading = 15
-        } else {
-            leading = 5
-        }
 
         NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: leading),
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 25),
+            titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: -10),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 30),
             subtitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5)
         ])
     }

@@ -17,6 +17,9 @@
 		1A19BFB92919768B00FCCF50 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFB82919768B00FCCF50 /* CreateTaskView.swift */; };
 		1A19BFBB291A3B0B00FCCF50 /* SaveDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFBA291A3B0B00FCCF50 /* SaveDate.swift */; };
 		1A19BFBE291A433100FCCF50 /* CreateTaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFBD291A433100FCCF50 /* CreateTaskModel.swift */; };
+		1A19BFC1291D001100FCCF50 /* String+StringComparison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFC0291D001100FCCF50 /* String+StringComparison.swift */; };
+		1A19BFC3291D188200FCCF50 /* Resourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFC2291D188200FCCF50 /* Resourses.swift */; };
+		1A19BFC5291D192700FCCF50 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A19BFC4291D192700FCCF50 /* UIColor+Hex.swift */; };
 		1A2658B828E5A63200A247AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2658B728E5A63200A247AA /* AppDelegate.swift */; };
 		1A2658BA28E5A63200A247AA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2658B928E5A63200A247AA /* SceneDelegate.swift */; };
 		1A2658C128E5A63300A247AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A2658C028E5A63300A247AA /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		1A19BFB82919768B00FCCF50 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
 		1A19BFBA291A3B0B00FCCF50 /* SaveDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveDate.swift; sourceTree = "<group>"; };
 		1A19BFBD291A433100FCCF50 /* CreateTaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskModel.swift; sourceTree = "<group>"; };
+		1A19BFC0291D001100FCCF50 /* String+StringComparison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+StringComparison.swift"; sourceTree = "<group>"; };
+		1A19BFC2291D188200FCCF50 /* Resourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resourses.swift; sourceTree = "<group>"; };
+		1A19BFC4291D192700FCCF50 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		1A2658B428E5A63200A247AA /* TODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A2658B728E5A63200A247AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A2658B928E5A63200A247AA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +90,7 @@
 		1A19BF9D29182D0500FCCF50 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				1A19BFBF291CFFA700FCCF50 /* Extensions */,
 				1A2658B728E5A63200A247AA /* AppDelegate.swift */,
 				1A2658B928E5A63200A247AA /* SceneDelegate.swift */,
 				1A2658C528E5A63300A247AA /* Info.plist */,
@@ -96,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				1A2658C028E5A63300A247AA /* Assets.xcassets */,
+				1A19BFC2291D188200FCCF50 /* Resourses.swift */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -116,6 +124,15 @@
 				1A19BFBD291A433100FCCF50 /* CreateTaskModel.swift */,
 			);
 			path = CreateTaskView;
+			sourceTree = "<group>";
+		};
+		1A19BFBF291CFFA700FCCF50 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A19BFC0291D001100FCCF50 /* String+StringComparison.swift */,
+				1A19BFC4291D192700FCCF50 /* UIColor+Hex.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		1A2658AB28E5A63200A247AA = {
@@ -246,10 +263,13 @@
 				1A19BFA529182DE300FCCF50 /* TableViewDataSource.swift in Sources */,
 				1A19BFBE291A433100FCCF50 /* CreateTaskModel.swift in Sources */,
 				1A19BFBB291A3B0B00FCCF50 /* SaveDate.swift in Sources */,
+				1A19BFC1291D001100FCCF50 /* String+StringComparison.swift in Sources */,
 				1A19BFA229182D9100FCCF50 /* Model.swift in Sources */,
 				1A2658B828E5A63200A247AA /* AppDelegate.swift in Sources */,
+				1A19BFC5291D192700FCCF50 /* UIColor+Hex.swift in Sources */,
 				1A19BFA7291831FB00FCCF50 /* CustomTableView.swift in Sources */,
 				1A19BFA029182D8100FCCF50 /* TableViewCell.swift in Sources */,
+				1A19BFC3291D188200FCCF50 /* Resourses.swift in Sources */,
 				1A19BF9929182A3500FCCF50 /* ViewController.swift in Sources */,
 				1A2658BA28E5A63200A247AA /* SceneDelegate.swift in Sources */,
 			);

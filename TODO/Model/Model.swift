@@ -10,10 +10,10 @@ import Foundation
 class ItemEntity {
 
     var title: String
-    var completedDate: String?
+    var completedDate: String
     var completed: Bool
 
-    init(title: String, completedDate: String?, completed: Bool) {
+    init(title: String, completedDate: String, completed: Bool) {
         self.title = title
         self.completedDate = completedDate
         self.completed = completed

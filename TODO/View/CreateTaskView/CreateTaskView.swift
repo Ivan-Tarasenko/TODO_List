@@ -127,14 +127,23 @@ final class CreateTaskView: UIView {
         doneAction?(model.data ?? "", titleTask)
         model.data?.removeAll()
         textField.text?.removeAll()
-        isHidden.toggle()
+        animationHidden()
     }
 
     func cancelButtonPressed() {
-        isHidden = true
+        animationHidden()
     }
 
     func datePickerPressed(_ sender: UIDatePicker) {
         model.data = model.convertDateFormat(date: sender)
+    }
+
+    func animationHidden() {
+        UIView.animate(withDuration: 0.25) {
+            self.transform = self.transform.scaledBy(x: 0.001, y: 0.001)
+        } completion: { _ in
+            self.transform = self.transform.scaledBy(x: 1000, y: 1000)
+            self.removeFromSuperview()
+        }
     }
 }

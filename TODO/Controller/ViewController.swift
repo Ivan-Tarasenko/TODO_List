@@ -28,7 +28,14 @@ class ViewController: UIViewController, UISearchBarDelegate {
         addItem()
         editIem()
         removeItem()
+        changeStatus()
     }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.search(searchText: searchText)
+        tableView.reloadData()
+    }
+
 }
 
 // MARK: - Operation on items
@@ -38,17 +45,16 @@ extension ViewController {
             guard let self else { return }
             self.model.addItem(task: title, completedDate: date)
             self.tableView.reloadData()
-
         }
     }
 
     func editIem() {
         customDelegate.editButtonAction = { [weak self] index in
             guard let self else { return }
-            self.createTaskView.isHidden = false
+            self.appearanceView()
             self.createTaskView.textField.text! = self.model.items[index].title
-            self.createTaskView.doneAction = {[weak self] date, title in
-                guard let self else { return }
+
+            self.createTaskView.doneAction = { [self] date, title in
                 self.model.editItem(at: index, edit: title, date: date)
                 self.tableView.reloadData()
             }
@@ -60,6 +66,19 @@ extension ViewController {
             guard let self else { return }
             self.model.removeItem(at: index)
             self.tableView.reloadData()
+        }
+    }
+
+    func changeStatus() {
+        customDelegate.changeStatusAction = { [weak self] indexPath in
+            guard let self else { return }
+            if self.model.changeState(at: indexPath.row) == true {
+                self.tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+                self.tableView.cellForRow(at: indexPath)?.backgroundColor = R.ColorCell.done
+            } else {
+                self.tableView.cellForRow(at: indexPath)?.accessoryType = .none
+                self.tableView.cellForRow(at: indexPath)?.backgroundColor = R.ColorCell.notCompleted
+            }
         }
     }
 }
@@ -99,20 +118,18 @@ extension ViewController {
 @objc extension ViewController {
 
     func addButtonPressed() {
-        createTaskView.isHidden = false
-
+        appearanceView()
     }
 
     func editButtonPressed() {
         let editON = UIImage(systemName: "highlighter")
         let editOff = UIImage(systemName: "pencil.slash")
         let editButton = navigationItem.rightBarButtonItems![1]
-        tableView.setEditing(!tableView.isEditing, animated: true)
+        tableView.setEditing(model.isEdit, animated: true)
 
         editButton.image = model.isEdit ? editOff : editON
 
         model.isEdit.toggle()
-//        tableView.reloadData()
     }
 
     func sortButtonPressed() {
@@ -133,10 +150,8 @@ private extension ViewController {
 
     func setupView() {
         view.addSubview(tableView)
-        view.addSubview(createTaskView)
         customDataSource.model = model
         createTaskView.center = view.center
-        createTaskView.isHidden = true
         title = "ToDo List"
     }
 
@@ -153,5 +168,23 @@ private extension ViewController {
         tableView.delegate = customDelegate
         tableView.frame = view.frame
         tableView.register(Cell.self, forCellReuseIdentifier: Cell.identifier)
+    }
+
+    // Animation of the appearance of the view
+    func transformScale(posinionKey: String, view: UIView) {
+        let animation = CABasicAnimation(keyPath: posinionKey)
+        animation.fromValue = 0.1
+        animation.toValue = 1
+        animation.duration = 0.15
+        animation.repeatCount = 1
+        view.layer.add(animation, forKey: posinionKey)
+    }
+
+    func appearanceView() {
+        view.addSubview(createTaskView)
+        createTaskView.textField.becomeFirstResponder()
+        transformScale(posinionKey: "transform.scale.x", view: createTaskView)
+        transformScale(posinionKey: "transform.scale.y", view: createTaskView)
+
     }
 }
