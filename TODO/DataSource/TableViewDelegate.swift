@@ -9,7 +9,6 @@ import UIKit
 
 class TableViewDelegate: NSObject, UITableViewDelegate {
 
-    let model = ViewModel()
     var editButtonAction: ((Int) -> Void)?
     var removeButtonAction: ((Int) -> Void)?
     var changeStatusAction: ((IndexPath) -> Void)?

@@ -64,6 +64,7 @@
 			children = (
 				1A19BFA129182D9100FCCF50 /* Model.swift */,
 				1A19BFBA291A3B0B00FCCF50 /* SaveDate.swift */,
+				1A19BFB6291970B200FCCF50 /* ViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -82,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				1A19BF9829182A3500FCCF50 /* ViewController.swift */,
-				1A19BFB6291970B200FCCF50 /* ViewModel.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
