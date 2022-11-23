@@ -9,8 +9,6 @@ import UIKit
 
 final class Cell: UITableViewCell {
 
-    let model = ViewModel()
-
     static var identifier: String {
         return String(describing: self)
     }

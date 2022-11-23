@@ -7,11 +7,15 @@
 
 import UIKit
 
+protocol TaskModelProtocol {
+    func convertDateFormat(date: UIDatePicker) -> String
+}
+
 private struct KeysDefaults {
     static let keyData = "date"
 }
 
-final class CreateTaskModel {
+final class CreateTaskModel: TaskModelProtocol {
 
     func convertDateFormat(date: UIDatePicker) -> String {
         
@@ -24,19 +28,4 @@ final class CreateTaskModel {
 
         return selectedDate
     }
-
-    // Save date completed task
-    private let defaults = UserDefaults.standard
-
-    var data: String? {
-        get {
-            return defaults.string(forKey: KeysDefaults.keyData)
-        }
-        set {
-            if let data = newValue {
-                defaults.set(data, forKey: KeysDefaults.keyData)
-            }
-        }
-    }
-
 }

@@ -10,7 +10,8 @@ import UIKit
 final class CreateTaskView: UIView {
 
     var doneAction: ((String, String) -> Void)?
-    let model = CreateTaskModel()
+    var model: TaskModelProtocol!
+    var saveDate: DataProtorol!
 
     let doneButton: UIButton = {
         let button = UIButton()
@@ -66,6 +67,8 @@ final class CreateTaskView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: 230, height: 280)))
+        saveDate = SaveData()
+        model = CreateTaskModel()
         setupView()
         makeCondtraints()
         addTargets()
@@ -123,9 +126,10 @@ final class CreateTaskView: UIView {
 @objc extension CreateTaskView {
 
     func doneButtonPressed() {
+        guard !textField.text!.isEmpty else { return }
         guard let titleTask = textField.text else { return }
-        doneAction?(model.data ?? "", titleTask)
-        model.data?.removeAll()
+        doneAction?(saveDate.data ?? "", titleTask)
+        saveDate.data?.removeAll()
         textField.text?.removeAll()
         animationHidden()
     }
@@ -135,7 +139,7 @@ final class CreateTaskView: UIView {
     }
 
     func datePickerPressed(_ sender: UIDatePicker) {
-        model.data = model.convertDateFormat(date: sender)
+        saveDate.data = model.convertDateFormat(date: sender)
     }
 
     func animationHidden() {

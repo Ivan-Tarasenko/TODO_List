@@ -7,7 +7,20 @@
 
 import Foundation
 
-final class ViewModel {
+protocol ViewModelProtocol {
+    var isSorted: Bool {get set}
+    var isEdit: Bool {get set}
+    var items: [ItemEntity] {get set}
+
+    func addItem(task string: String, completedDate: String, isCompleted: Bool)
+    func removeItem(at index: Int)
+    func editItem(at index: Int, edit title: String, date: String)
+    func sortItemByTitle()
+    func changeState(at index: Int) -> Bool
+    func search(searchText: String)
+}
+
+final class ViewModel: ViewModelProtocol {
 
     var isSorted: Bool = true
     var isEdit: Bool = true
@@ -20,7 +33,7 @@ final class ViewModel {
     ]
 
     // A method that adds new tasks
-    func addItem(task string: String, completedDate: String = "", isCompleted: Bool = false) {
+    func addItem(task string: String, completedDate: String = "", isCompleted: Bool) {
         items.append(ItemEntity(title: string, completedDate: completedDate, completed: isCompleted))
     }
 
