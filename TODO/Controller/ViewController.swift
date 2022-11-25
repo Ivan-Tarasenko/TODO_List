@@ -9,7 +9,7 @@ import UIKit
 
 class ViewController: UIViewController, UISearchBarDelegate {
 
-    var model = ViewModel()
+    var model: ViewModelProtocol!
 
     var customDataSource = TableViewDataSource()
     private let customDelegate = TableViewDelegate()
@@ -17,10 +17,9 @@ class ViewController: UIViewController, UISearchBarDelegate {
     private let createTaskView = CreateTaskView()
     private let searchController = UISearchController()
 
-    let saveDate = SaveData()
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        model = ViewModel()
         setupView()
         setupTableView()
         setupSearchController()
@@ -32,7 +31,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.search(searchText: searchText)
+        model?.search(searchText: searchText)
         tableView.reloadData()
     }
 
@@ -43,7 +42,7 @@ extension ViewController {
     func addItem() {
         createTaskView.doneAction = { [weak self] date, title in
             guard let self else { return }
-            self.model.addItem(task: title, completedDate: date)
+            self.model?.addItem(task: title, completedDate: date, isCompleted: false)
             self.tableView.reloadData()
         }
     }
@@ -52,7 +51,7 @@ extension ViewController {
         customDelegate.editButtonAction = { [weak self] index in
             guard let self else { return }
             self.appearanceView()
-            self.createTaskView.textField.text! = self.model.items[index].title
+            self.createTaskView.textField.text! = self.model?.items[index].title ?? ""
 
             self.createTaskView.doneAction = { [self] date, title in
                 self.model.editItem(at: index, edit: title, date: date)
@@ -150,7 +149,7 @@ private extension ViewController {
 
     func setupView() {
         view.addSubview(tableView)
-        customDataSource.model = model
+        customDataSource.model = model as? ViewModel 
         createTaskView.center = view.center
         title = "ToDo List"
     }

@@ -9,7 +9,7 @@ import UIKit
 
 final class TableViewDataSource: NSObject, UITableViewDataSource {
 
-    var model = ViewModel()
+    var model: ViewModelProtocol!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         model.items.count
@@ -33,6 +33,5 @@ final class TableViewDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print("TEst")
     }
 }

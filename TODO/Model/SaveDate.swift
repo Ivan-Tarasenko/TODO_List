@@ -7,11 +7,15 @@
 
 import Foundation
 
+protocol DataProtorol {
+    var data: String? {get set}
+}
+
 private struct KeysDefaults {
     static let keyData = "date"
 }
 
-final class SaveData {
+final class SaveData: DataProtorol {
 
     private let defaults = UserDefaults.standard
 
